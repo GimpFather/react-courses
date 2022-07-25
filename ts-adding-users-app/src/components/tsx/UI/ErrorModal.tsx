@@ -1,30 +1,25 @@
-import React from "react";
-import Card from "./Card";
-import Button from "./Button";
+import ReactDOM from "react-dom";
 
-interface IErrorModal {
-	title: string;
-	message: string;
-	errorHandler: () => void;
-}
+import ModalBackdrop from "./Modal/ModalBackdrop";
+import ModalOverlay from "./Modal/ModalOverlay";
+
+import { IErrorModal } from "../../../utilities/models/interfaces";
 
 const ErrorModal = ({ title, message, errorHandler }: IErrorModal) => {
 	return (
 		<>
-			<div className="backdrop" onClick={errorHandler}></div>
-			<Card className="modal">
-				<header className="header">
-					<h2>{title}</h2>
-				</header>
-				<div className="content">
-					<p>{message}</p>
-				</div>
-				<footer className="actions">
-					<Button type="submit" onClick={errorHandler}>
-						Close
-					</Button>
-				</footer>
-			</Card>
+			{ReactDOM.createPortal(
+				<ModalBackdrop errorHandler={errorHandler} />,
+				document.getElementById("backdrop-root")!
+			)}
+			{ReactDOM.createPortal(
+				<ModalOverlay
+					title={title}
+					message={message}
+					errorHandler={errorHandler}
+				/>,
+				document.getElementById("overlay-root")!
+			)}
 		</>
 	);
 };
