@@ -1,24 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import validateByLength from "../../../utilities/functions/validateByLength";
-import { IAddUserHandler } from "../../../utilities/models/interfaces";
+import { IAddUser } from "../../../utilities/models/interfaces";
 import { SErrorModal } from "../../../utilities/models/types";
 
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
 
-interface IAddUser {
-	onAddUser: ({ userName, userAge }: IAddUserHandler) => void;
-}
-
 const AddUser = ({ onAddUser }: IAddUser) => {
-	const [enteredUserName, setEnteredUserName] = useState<string>("");
-	const [enteredAge, setEnteredAge] = useState<number>(0);
 	const [error, setError] = useState<SErrorModal>();
+
+	const nameInputRef = useRef<HTMLInputElement>(null);
+	const ageInputRef = useRef<HTMLInputElement>(null);
 
 	const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
+		const enteredUserName: string | undefined = nameInputRef.current?.value;
+		const enteredAge: number | undefined = ageInputRef.current?.valueAsNumber;
 
 		if (
 			validateByLength({ valueToValidate: enteredUserName }) ||
@@ -29,8 +28,9 @@ const AddUser = ({ onAddUser }: IAddUser) => {
 				message: "Please enter a valid name and age!",
 				isError: true,
 			});
+			return true;
 		}
-		if (enteredAge < 1) {
+		if (enteredAge! < 1) {
 			setError({
 				title: "Invalid age!",
 				message: "Please enter a valid age!",
@@ -38,17 +38,7 @@ const AddUser = ({ onAddUser }: IAddUser) => {
 			});
 			return;
 		}
-		onAddUser({ userName: enteredUserName, userAge: enteredAge });
-		setEnteredAge(0);
-		setEnteredUserName("");
-	};
-
-	const usernameChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
-		setEnteredUserName(event.currentTarget.value);
-	};
-
-	const ageChangeHandler = (event: React.FormEvent<HTMLInputElement>) => {
-		setEnteredAge(event.currentTarget.valueAsNumber);
+		onAddUser({ userName: enteredUserName!, userAge: enteredAge! });
 	};
 
 	const errorHandler = () => {
@@ -71,19 +61,9 @@ const AddUser = ({ onAddUser }: IAddUser) => {
 			<Card className="input">
 				<form onSubmit={submitHandler}>
 					<label htmlFor="username-input">Username</label>
-					<input
-						id="username-input"
-						type="text"
-						value={enteredUserName}
-						onChange={usernameChangeHandler}
-					></input>
+					<input id="username-input" type="text" ref={nameInputRef}></input>
 					<label htmlFor="age-input">Age (in years)</label>
-					<input
-						id="age-input"
-						type="number"
-						value={enteredAge}
-						onChange={ageChangeHandler}
-					></input>
+					<input id="age-input" type="number" ref={ageInputRef}></input>
 					<Button type="submit">Add User</Button>
 				</form>
 			</Card>

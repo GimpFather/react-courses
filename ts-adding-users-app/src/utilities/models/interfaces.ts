@@ -8,3 +8,7 @@ export interface IErrorModal {
 	message: string;
 	errorHandler: () => void;
 }
+
+export interface IAddUser {
+	onAddUser: ({ userName, userAge }: IAddUserHandler) => void;
+}
