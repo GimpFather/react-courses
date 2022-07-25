@@ -1,5 +1,3 @@
-import React, { MouseEventHandler } from "react";
-
 interface IAddUser {
 	children: React.ReactNode;
 	type: "button" | "submit" | "reset" | undefined;
