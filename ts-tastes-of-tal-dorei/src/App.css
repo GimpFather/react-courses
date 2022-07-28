@@ -1,1 +1,5 @@
-@import './components/css/index.css';
+@import "./components/css/index.css";
+
+body {
+	background-color: #5028ab;
+}
