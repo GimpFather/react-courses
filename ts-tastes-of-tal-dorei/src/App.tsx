@@ -1,9 +1,12 @@
+import "./App.css";
+import Header from "./components/tsx/Layout/Header";
+
 function App() {
-  return (
-    <div className="App">
-      <p>test</p>
-    </div>
-  );
+	return (
+		<>
+			<Header></Header>
+		</>
+	);
 }
 
 export default App;
