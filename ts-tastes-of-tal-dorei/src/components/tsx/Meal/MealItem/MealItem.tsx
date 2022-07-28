@@ -1,6 +1,7 @@
 import { IMealItem } from "../../../../utilities/models/interfaces";
+import MealItemForm from "./MealItemForm";
 
-const MealItem = ({ name, desc, price }: IMealItem) => {
+const MealItem = ({ id, name, desc, price }: IMealItem) => {
 	const formatedPrice = `$${price.toFixed(2)}`;
 
 	return (
@@ -10,7 +11,9 @@ const MealItem = ({ name, desc, price }: IMealItem) => {
 				<div className="description">{desc}</div>
 				<div className="price">{formatedPrice}</div>
 			</div>
-			<div></div>
+			<div>
+				<MealItemForm id={id}></MealItemForm>
+			</div>
 		</li>
 	);
 };
