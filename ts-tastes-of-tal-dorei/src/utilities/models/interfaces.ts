@@ -1,9 +1,9 @@
 import React from "react";
 import { TInput } from "./types";
-export interface ICard {
+
+export interface IChildren {
 	children: React.ReactNode;
 }
-
 export interface IMealItem {
 	id: string;
 	name: string;
