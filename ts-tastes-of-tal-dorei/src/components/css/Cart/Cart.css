@@ -16,14 +16,15 @@
 }
 
 .actions {
-	text-align: right;
+	display: flex;
+	justify-content: flex-end;
 }
 
 .actions button {
 	font: inherit;
 	cursor: pointer;
 	background-color: transparent;
-	border: 1px solid #8a2b06;
+	border: 1px solid #5028ab;
 	padding: 0.5rem 2rem;
 	border-radius: 25px;
 	margin-left: 1rem;
@@ -31,16 +32,16 @@
 
 .actions button:hover,
 .actions button:active {
-	background-color: #5a1a01;
-	border-color: #5a1a01;
+	background-color: #5028ab;
+	border-color: #5028ab;
 	color: white;
 }
 
 .actions .button--alt {
-	color: #8a2b06;
+	color: #8028ab;
 }
 
 .actions .button {
-	background-color: #8a2b06;
+	background-color: #8028ab;
 	color: white;
 }
