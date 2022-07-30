@@ -34,10 +34,17 @@ export interface ICart {
 }
 
 export interface IOnClick {
-	onClick: React.MouseEventHandler
+	onClick: React.MouseEventHandler;
 }
 
 export interface IModal {
 	onCloseCart: () => void;
 	children: React.ReactNode;
+}
+
+export interface ICartContext {
+	items: IMealItem[];
+	totalAmount: number;
+	addItem: (item: IMealItem) => {};
+	removeItem: (id: IMealItem["id"]) => {};
 }
