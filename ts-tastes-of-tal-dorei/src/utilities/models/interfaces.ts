@@ -1,4 +1,5 @@
 import React from "react";
+import { Interface } from "readline";
 import { TInput } from "./types";
 
 export interface IChildren {
@@ -18,4 +19,25 @@ export interface IInput {
 
 export interface IMealItemForm {
 	id: string;
+}
+
+export interface IHeader {
+	onOpenCart: () => void;
+}
+
+export interface IHeaderCartButton {
+	onClick: () => void;
+}
+
+export interface ICart {
+	onCloseCart: () => void;
+}
+
+export interface IOnClick {
+	onClick: React.MouseEventHandler
+}
+
+export interface IModal {
+	onCloseCart: () => void;
+	children: React.ReactNode;
 }

@@ -1,14 +1,14 @@
 import ReactDOM from "react-dom";
 import Backdrop from "./Backdrop";
 import ModalOverlay from "./ModalOverlay";
-import { IChildren } from "../../../utilities/models/interfaces";
+import { IModal } from "../../../utilities/models/interfaces";
 
-const Modal = ({ children }: IChildren) => {
+const Modal = ({children, onCloseCart}: IModal) => {
 	const portalRootElement = document.getElementById("overlays");
 
 	return (
 		<>
-			{ReactDOM.createPortal(<Backdrop></Backdrop>, portalRootElement!)}
+			{ReactDOM.createPortal(<Backdrop onClick={onCloseCart}></Backdrop>, portalRootElement!)}
 			{ReactDOM.createPortal(
 				<ModalOverlay>{children}</ModalOverlay>,
 				portalRootElement!

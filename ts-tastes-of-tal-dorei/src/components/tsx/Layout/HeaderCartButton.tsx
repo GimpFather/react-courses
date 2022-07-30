@@ -1,8 +1,9 @@
+import { IHeaderCartButton } from "../../../utilities/models/interfaces";
 import CartIcon from "../Features/CartIcon";
 
-const HeaderCartButton = () => {
+const HeaderCartButton = ({onClick}:IHeaderCartButton) => {
 	return (
-		<button className="button">
+		<button onClick={onClick} className="button">
 			<span className="icon">
 				<CartIcon></CartIcon>
 			</span>
