@@ -5,7 +5,7 @@ const Cart = ({onCloseCart}: ICart) => {
 	const cartItems = (
 		<ul className="cart-items">
 			{[{ id: "c1", name: "Sushi", amount: 2, price: 12.99 }].map((item) => (
-				<li>{item.name}</li>
+				<li key={item.id}>{item.name}</li>
 			))}
 		</ul>
 	);
