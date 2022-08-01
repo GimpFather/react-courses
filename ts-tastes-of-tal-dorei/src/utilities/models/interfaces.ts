@@ -45,6 +45,6 @@ export interface IModal {
 export interface ICartContext {
 	items: IMealItem[];
 	totalAmount: number;
-	addItem: (item: IMealItem) => {};
-	removeItem: (id: IMealItem["id"]) => {};
+	addItem: (item: IMealItem) => void;
+	removeItem: (id: IMealItem["id"]) => void;
 }
