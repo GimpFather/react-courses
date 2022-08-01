@@ -48,3 +48,8 @@ export interface ICartContext {
 	addItem: (item: IMealItem) => void;
 	removeItem: (id: IMealItem["id"]) => void;
 }
+
+export interface ICartReducer {
+	state: string;
+	action: { type: string; name: string };
+}

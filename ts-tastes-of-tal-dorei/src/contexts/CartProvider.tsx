@@ -1,22 +1,42 @@
-import React from "react";
+import React, { useReducer } from "react";
 import {
 	ICartContext,
+	ICartReducer,
 	IChildren,
 	IMealItem,
 } from "../utilities/models/interfaces";
 import CartContext from "./cart-context";
 
+const defaultCartState = {
+	items: [],
+	totalAmount: 0,
+};
+
+const cartReducer = ({ state, action }: ICartReducer) => {
+	if (action.type === "ADD_CART_ITEM") {
+		const updatedItems = state.items.concat(action.item);
+	}
+	if (action.type === "REMOVE_CART_ITEM") {
+	}
+	return defaultCartState;
+};
+
 const CartProvider = ({ children }: IChildren) => {
+	const [cartState, dispatchCartAction] = useReducer(
+		cartReducer,
+		defaultCartState
+	);
+
 	const addItemToCartHandler = (item: IMealItem) => {
-		console.log("test");
+		dispatchCartAction({ type: "ADD_CART_ITEM", item: item });
 	};
 	const removeItemToCartHandler = (id: IMealItem["id"]) => {
-		console.log("test");
+		dispatchCartAction({ type: "REMOVE_CART_ITEM", id: id });
 	};
 
 	const cartContext: ICartContext = {
-		items: [],
-		totalAmount: 0,
+		items: cartState.items,
+		totalAmount: cartState.totalAmount,
 		addItem: addItemToCartHandler,
 		removeItem: removeItemToCartHandler,
 	};
