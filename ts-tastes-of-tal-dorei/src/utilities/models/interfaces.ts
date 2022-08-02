@@ -50,6 +50,6 @@ export interface ICartContext {
 }
 
 export interface ICartReducer {
-	state: string;
-	action: { type: string; name: string };
+	state: { items: IMealItem[]; totalAmount: number };
+	action: { item: IMealItem; type: string };
 }

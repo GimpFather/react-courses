@@ -13,12 +13,21 @@ const defaultCartState = {
 };
 
 const cartReducer = ({ state, action }: ICartReducer) => {
-	if (action.type === "ADD_CART_ITEM") {
-		const updatedItems = state.items.concat(action.item);
+	switch (action.type) {
+		case "ADD_CART_ITEM":
+			const updatedItems = state.items.concat(action.item);
+			const updatedTotalAmount =
+				state.totalAmount + action.item.price * action.item.amount;
+			return {
+				items: updatedItems,
+				totalAmount: updatedTotalAmount,
+			};
+		case "REMOVE_CART_ITEM":
+			break;
+		default:
+			defaultCartState;
+			break;
 	}
-	if (action.type === "REMOVE_CART_ITEM") {
-	}
-	return defaultCartState;
 };
 
 const CartProvider = ({ children }: IChildren) => {
