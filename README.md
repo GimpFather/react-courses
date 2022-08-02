@@ -15,6 +15,7 @@ Disclaimer for taking this project serious: As I said - I'm using video courses 
 - <a href="https://github.com/GimpFather/react-courses/tree/dev/js-expenses-chart">`js-expenses-chart-app`</a> is the app that has base React knowledge, based on some Udemy course. It's a static application for keeping tabs on your expenses.
 - <a href="https://github.com/GimpFather/react-courses/tree/dev/ts-adding-users-app">`ts-adding-users-app`</a> it's a simple app completely built in Typescript. It's a static app when you can only add a user to the bigger group.
 - <a href="https://github.com/GimpFather/react-courses/tree/dev/js-login-app">`js-login-app`</a> it's an app that covers three topics - `useEffect`, `useReducer` and `Context API`. Unfortunately, it's not a TypeScript app, because the roots were provided by the course instructor but I'm 100% sure that I'm gonna touch on these three topics with TypeScript soon.
+- <a href="https://github.com/GimpFather/react-courses/tree/dev/ts-tastes-of-tal-dorei">`ts-tastes-of-tal-dorei`</a> it's an app that covers topics from `js-login-app` but with usage of TypeScript. Currently I stoped working on that project, because I wanted to move for something more interesting. The app was basicly an restaurant website with adding to cart mechanism.
 
 # Developer part - setup
 
